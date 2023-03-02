@@ -16,6 +16,7 @@ h1 {
     margin-left: auto;
     margin-right: auto;
     margin-top: 20px;
+    margin-bottom: 0px;
 }
 
 #languages {
@@ -31,10 +32,22 @@ h1 {
     color: black;
 }
 
-#lineBetweenLanguages {
-    border: solid black 1px;
-    padding: 0px;
-    margin-left: 60px;
+#swedish {
+    width: 100%;
+    border-right: solid black 1px;
+    margin: 0px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: start;
+}
+ 
+#robberLanguage {
+    width: 100%;
+    border-left: solid black 1px;
+    margin: 0px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: end;
 }
 
 #textAreaLeftAndRight {
@@ -45,15 +58,29 @@ h1 {
 #textareaLeft {
     margin-right: 0px;
     border: solid black 1px;
+    border-radius: 0px;
+    margin-top: 0px;
+    width: 45em;
+    height: 12em;
 }
 
 #textareaRight {
     margin-left: 0px;
     border: solid black 1px;
+    border-radius: 0px;
+    margin-top: 0px;
+    width: 45em;
+    height: 12em;
 }
 
 textarea::placeholder {
     font-family: 'Metamorphous', cursive;
     font-size: 1.2em;
     padding: 5px;
+}
+
+@media screen and (max-width: 768px) {
+    #textareaLeft, #textareaRight {
+        width: 30em;
+    }
 }
