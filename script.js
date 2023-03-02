@@ -26,6 +26,3 @@ function translation(inputString){
 function setOutput(){
     output.value = translation();  
 }
-
-//when no input is provided
-translation();
