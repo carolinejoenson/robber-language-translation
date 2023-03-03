@@ -1,28 +1,53 @@
-var input = document.getElementById("textareaLeft");
-var output = document.getElementById("textareaRight");
+var swedish = document.getElementById("textareaLeft");
+var robberLanguage = document.getElementById("textareaRight");
 
 //update output every time the input changes 
-input.addEventListener("input", setOutput);
+swedish.addEventListener("input", setRobberLanguage);
+robberLanguage.addEventListener("input", setSwedishLanguage);
 
-//translate input
-function translation(inputString){
-    var inputString = input.value;
-    var inputStringLength = inputString.length;
-    var outputString = "";
-    for (i=0; i<inputStringLength; i++){
+//translate Swedish to robber language
+function translateToRobberLanguage(){
+    var swedishString = swedish.value;
+    var swedishStringLength = swedishString.length;
+    var robberLanguageTranslation = "";
+    for (i=0; i<swedishStringLength; i++){
         const allLetters = /([a-ö])/gi; 
         const excludeVowels = /[^aeiouyåäö]/gi;
-        if (allLetters.test(inputString[i]) && excludeVowels.test(inputString[i])){
-            outputString += (inputString[i] + "o" + inputString[i]);
+        if (allLetters.test(swedishString[i]) && excludeVowels.test(swedishString[i])){
+            robberLanguageTranslation += (swedishString[i] + "o" + swedishString[i].toLowerCase());
         }
         else {
-            outputString += (inputString[i]);
+            robberLanguageTranslation += (swedishString[i]);
         }
     }
-    return outputString
+    return robberLanguageTranslation
 }
 
-//set translated text to same as output to display
-function setOutput(){
-    output.value = translation();  
+//translate robber language to Swedish
+function translateToSwedish(){
+    var robberLanguageString = robberLanguage.value;
+    var robberLanguageStringLength = robberLanguageString.length;
+    var swedishTranslation = "";
+    for (var i=0; i<robberLanguageStringLength; i++){
+        const allLetters = /([a-ö])/gi; 
+        const excludeVowels = /[^aeiouyåäö]/gi;
+        const letterO = /[o]/gi;
+        if (allLetters.test(robberLanguageString[i]) && excludeVowels.test(robberLanguageString[i]) && letterO.test(robberLanguageString[i+1]) && robberLanguageString[i].toLowerCase()==robberLanguageString[i+2]){
+            swedishTranslation += (robberLanguageString[i]);
+            i+=2;
+        }
+        else {
+            swedishTranslation += (robberLanguageString[i]);
+        }
+    }
+    return swedishTranslation
+}
+
+//set translation to same as output to display
+function setRobberLanguage(){
+    robberLanguage.value = translateToRobberLanguage();  
+}
+
+function setSwedishLanguage(){
+    swedish.value = translateToSwedish();  
 }

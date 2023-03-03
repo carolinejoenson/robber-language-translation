@@ -1,2 +1,2 @@
 # The Robber Language
-Translate Swedish text into the robber language (in Swedish called "Rövarspråket").
+Translate text between Swedish and The Robber Language (in Swedish "Rövarspråket").
